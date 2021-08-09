@@ -1431,20 +1431,5 @@
       "30",
       "66"
     ]
-  },
-  {
-    "id": "48",
-    "type_of_source": null,
-    "type_of_threat": null,
-    "type_of_event": null,
-    "supporting_asset": null,
-    "composite_asset": null,
-    "primary_asset": null,
-    "consequence": null,
-    "description": "None generates a None threat causing a None of the None of the None which affects None and might lead to a None issue",
-    "example": null,
-    "measures": [
-      "None"
-    ]
   }
 ]
