@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function StickyHeadEventTable({columns, rows}) {
+function StickyHeadEventTable({columns, rows, resource_name}) {
     const classes = useStyles();
     const history = useHistory();
 
@@ -59,7 +59,7 @@ function StickyHeadEventTable({columns, rows}) {
                         {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, idx) => {
                             return (
                                 <TableRow hover role="checkbox" tabIndex={-1} key={idx}
-                                          onClick={() => history.push('/measures/' + row.id)}>
+                                          onClick={() => history.push('/' + resource_name + '/' + row.id)}>
                                     {columns.map((column) => {
                                         const value = row[column.id];
                                         return (

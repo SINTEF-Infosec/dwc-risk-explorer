@@ -136,11 +136,11 @@ function MeasuresPage() {
         GetAllMeasures().then((measures) => {setMeasures(measures); setAllMeasures(measures)})
     }, [])
 
-    const joinTablesList = (data) => <ul>{data.map((elt) => <li>{elt}</li>)}</ul>
+    const joinTablesList = (data) => <ul>{data.map((elt, idx) => <li key={idx}>{elt}</li>)}</ul>
     const splitWords = (word) => word.split(/(?=[A-Z][a-z])/).join(" ");
 
     const columns = [
-        {id: 'id', label: 'ID', minWidth: 20},
+        {id: 'id', label: 'ID', minWidth: 20, align: "center"},
         {id: 'short_name', label: 'Name', minWidth: 150, format: splitWords},
         {id: 'description', label: 'Description', minWidth: 250},
         {id: 'type_of_measure', label: 'Type of measure', minWidth: 150, format: joinTablesList},
@@ -216,7 +216,7 @@ function MeasuresPage() {
             }
             {
                 allMeasures.length > 0 ?
-                    <StickyHeadEventTable rows={measures} columns={columns}/>
+                    <StickyHeadEventTable rows={measures} columns={columns} resource_name={"measures"}/>
                     :
                     <Box className={classes.progressBox}>
                         <CircularProgress color="secondary"/>

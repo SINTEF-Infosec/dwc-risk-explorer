@@ -1,15 +1,7 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {GetAllEvents} from "../DataProvider/provider";
 import {makeStyles} from "@material-ui/core/styles";
 import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import {useHistory} from "react-router-dom";
 import {Box, Typography} from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Button from "@material-ui/core/Button";
@@ -125,7 +117,7 @@ function EventsPage() {
     }, [])
 
     const columns = [
-        {id: 'id', label: 'ID', minWidth: 20},
+        {id: 'id', label: 'ID', minWidth: 20, align: "center"},
         {id: 'type_of_source', label: 'Type of source', minWidth: 130},
         {id: 'type_of_threat', label: 'Type of threat', minWidth: 70},
         {id: 'type_of_event', label: 'Type of event', minWidth: 130},
@@ -135,6 +127,7 @@ function EventsPage() {
         {id: 'consequence', label: 'Consequence', minWidth: 70},
         {id: 'description', label: 'Description', minWidth: 200},
         {id: 'example', label: 'Example', minWidth: 200},
+        {id: 'measures', label: '# measures', minWidth: 50, format: (data) => data.length, align: "center"},
     ];
 
     return (
@@ -198,7 +191,7 @@ function EventsPage() {
             }
             {
                 allEvents.length > 0 ?
-                    <StickyHeadEventTable rows={events} columns={columns}/>
+                    <StickyHeadEventTable rows={events} columns={columns} resource_name={"events"}/>
                     :
                     <Box className={classes.progressBox}>
                         <CircularProgress color="secondary"/>
