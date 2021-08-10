@@ -23,6 +23,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ClearAllIcon from '@material-ui/icons/ClearAll';
+import StickyHeadEventTable from "../Components/StickyHeadEventTable";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,72 +47,6 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(2),
     },
 }));
-
-function StickyHeadEventTable({columns, rows}) {
-    const classes = useStyles();
-    const history = useHistory();
-
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
-
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value);
-        setPage(0);
-    };
-
-    return (
-        <Paper className={classes.root}>
-            <TableContainer className={classes.container}>
-                <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                        <TableRow>
-                            {columns.map((column) => (
-                                <TableCell
-                                    key={column.id}
-                                    align={column.align}
-                                    style={{minWidth: column.minWidth}}
-                                >
-                                    <strong>{column.label}</strong>
-                                </TableCell>
-                            ))}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, idx) => {
-                            return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={idx}
-                                          onClick={() => history.push('/events/' + row.id)}>
-                                    {columns.map((column) => {
-                                        const value = row[column.id];
-                                        return (
-                                            <TableCell key={column.id} align={column.align}>
-                                                {column.format && typeof value === 'number' ? column.format(value) : value}
-                                            </TableCell>
-                                        );
-                                    })}
-                                </TableRow>
-                            );
-                        })}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-        </Paper>
-    );
-}
-
 
 function EventsPage() {
     const [events, setEvents] = useState([])
@@ -164,7 +99,7 @@ function EventsPage() {
         setFilters([])
     }
 
-    const applyFilters = useCallback((filters) => {
+    const applyFilters = (filters) => {
         let filteredEvents = allEvents
 
         // successive filtering for each of the defined filter
@@ -183,7 +118,7 @@ function EventsPage() {
         })
 
         setEvents(filteredEvents)
-    })
+    }
 
     useEffect(() => {
         GetAllEvents().then((events) => {setEvents(events); setAllEvents(events)})
@@ -246,7 +181,7 @@ function EventsPage() {
                                     </Box>
                                 )
                             }) : <Typography id={"no-filter"} variant="body1" gutterBottom>
-                                No filters
+                                <em>No filters</em>
                             </Typography>
                         }
                         <Box display={"flex"} flexDirection={"row-reverse"} m={1}>

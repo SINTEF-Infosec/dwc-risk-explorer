@@ -10,6 +10,7 @@ import HomePage from "./Pages/HomePage";
 import MainAppBar from "./Components/AppBar";
 import AboutPage from "./Pages/AboutPage";
 import EventDetailPage from "./Pages/EventDetailPage";
+import MeasureDetailPage from "./Pages/MeasureDetailPage";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route path="/events">
               <EventsPage />
+            </Route>
+            <Route path="/measures/:id">
+              <MeasureDetailPage/>
             </Route>
             <Route path="/measures">
               <MeasuresPage />

@@ -19,4 +19,6 @@ export async function GetAllEvents() {
     return getJSON(EVENTS_FILE);
 }
 
-export const GetAllMeasures = () => getJSON(MEASURES_FILE);
+export async function GetAllMeasures() {
+    return getJSON(MEASURES_FILE);
+}
