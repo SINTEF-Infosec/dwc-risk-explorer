@@ -7,9 +7,10 @@ import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import OpacityIcon from '@material-ui/icons/Opacity';
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
+import SvgIcon from "@material-ui/core/SvgIcon";
+import {ReactComponent as DWCLogo} from "../logo.svg";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -89,10 +90,12 @@ export default function MainAppBar() {
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={() => {
                         history.push('/')
                     }}>
-                        <OpacityIcon/>
+                        <SvgIcon style={{ fontSize: 65 }}>
+                            <DWCLogo/>
+                        </SvgIcon>
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        DWC - RIDB & RRMD
+                        DWC - RIDB & RRMD Explorer
                     </Typography>
                     <div className={classes.grow}/>
                     <div className={classes.sectionDesktop}>
