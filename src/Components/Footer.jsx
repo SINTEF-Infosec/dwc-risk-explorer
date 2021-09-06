@@ -7,7 +7,7 @@ import {Link} from "@material-ui/core";
 
 export default function Footer() {
     return (
-        <AppBar position="static" color="primary">
+        <AppBar position={"relative"} color="primary" style={{height: "4rem"}}>
             <Container maxWidth="md">
                 <Toolbar >
                     <Typography variant="body1" color="inherit">

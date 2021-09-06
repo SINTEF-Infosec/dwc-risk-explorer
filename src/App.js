@@ -24,7 +24,7 @@ function App() {
                     <Box>
                         <MainAppBar/>
                     </Box>
-                    <Box flexGrow={1} style={{height: "100vh"}}>
+                    <Box flexGrow={1} style={{marginBottom: "4rem"}}>
                         <Switch>
                             <Route path="/events/:id">
                                 <EventDetailPage/>
