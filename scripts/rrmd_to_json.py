@@ -3,7 +3,7 @@ import json
 
 RRMD_FILE = 'data/rrmd.xlsx'
 NB_MEASURES = 73
-OUTPUT_FILE = "src/resources/measures.json"
+OUTPUT_FILE = "public/resources/measures.json"
 
 RRMD_SPAN = 24
 

@@ -3,7 +3,7 @@ import json
 
 RIDB_FILE = 'data/ridb.xlsx'
 NB_EVENTS = 74
-OUTPUT_FILE = "src/resources/events.json"
+OUTPUT_FILE = "public/resources/events.json"
 
 print("[+] Loading RIDB from %s" % RIDB_FILE)
 wb = load_workbook(filename = RIDB_FILE)
