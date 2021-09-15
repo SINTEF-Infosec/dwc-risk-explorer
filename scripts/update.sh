@@ -20,8 +20,15 @@ fi
 echo "Updating RRMD based on the RIDB..."
 python3 scripts/ridb_to_rrmd.py
 
-echo "Exporting RIDB to JSON..."
-python3 scripts/ridb_to_json.py
 
-echo "Exporting RRMD to JSON..."
-python3 scripts/rrmd_to_json.py
+if [ $? -eq 0 ]
+then
+    echo "Exporting RIDB to JSON..."
+    python3 scripts/ridb_to_json.py
+
+    echo "Exporting RRMD to JSON..."
+    python3 scripts/rrmd_to_json.py
+else
+    echo "Error during the update of the RRMD."
+    exit -1 
+fi

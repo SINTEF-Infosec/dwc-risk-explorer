@@ -2,9 +2,7 @@ from openpyxl import load_workbook
 import json
 
 RRMD_FILE = 'data/rrmd.xlsx'
-NB_MEASURES = 73
 OUTPUT_FILE = "public/resources/measures.json"
-
 RRMD_SPAN = 24
 
 wb2 = load_workbook(filename = 'data/rrmd.xlsx')
@@ -54,7 +52,16 @@ def read_measure(i):
        "details": measure_details
    }
 
-rrm = [read_measure(k) for k in range(NB_MEASURES + 1)]
+rrm = []
+keep_reading = True
+k = 0
+while keep_reading:
+    m = read_measure(k)
+    if m["short_name"] == None or m["short_name"] == "":
+        break
+    rrm.append(m)
+    k += 1
+
 
 with open(OUTPUT_FILE, 'w') as outfile:
      json.dump(rrm, outfile)

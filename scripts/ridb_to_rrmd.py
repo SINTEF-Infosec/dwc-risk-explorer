@@ -2,6 +2,7 @@ from openpyxl import load_workbook
 import json
 
 RRMD_SPAN = 24
+MAX_MEASURES = 200
 
 wb = load_workbook(filename = 'data/ridb.xlsx')
 wb.active = 3 # Selection of the database sheet
@@ -11,19 +12,21 @@ wb2 = load_workbook(filename = 'data/rrmd.xlsx')
 wb2.active = 3 
 ws2 = wb2.active
 
-
-def init_measures(m_dict, s):
-    for k in range(s):
-        m_dict["{}".format(k)] = {
-            "type_of_source": set(),
-            "type_of_threat": set(),
-            "type_of_event": set(),
-            "specific_asset": set(),
-            "type_of_asset": set(),
-            "consequence": set(),
-        }
-
+def init_measures(measures):
+    for k in range(MAX_MEASURES):
+          measures["{}".format(k+1)] = {
+                "type_of_source": set(),
+                "type_of_threat": set(),
+                "type_of_event": set(),
+                "specific_asset": set(),
+                "type_of_asset": set(),
+                "consequence": set(),
+            }
 def read_event_and_update_measures(i, measures):
+
+    if i > 90:
+        return False
+
     print("[+] Handling event %d" % i)
     evt_id = str(ws["A{}".format(2 + i)].value)
     evt_type_of_source = ws["B{}".format(2 + i)].value
@@ -36,6 +39,9 @@ def read_event_and_update_measures(i, measures):
     evt_description = ws["I{}".format(2 + i)].value
     evt_measures = [m.strip() for m in str(ws["M{}".format(2 + i)].value).split(",")]
 
+    if evt_type_of_source == "" or evt_type_of_source == None:
+        return False
+
     for measure_id in evt_measures:
         measures[measure_id]["type_of_source"].add(normalize_text(evt_type_of_source))
         measures[measure_id]["type_of_threat"].add(normalize_text(evt_type_of_threat))
@@ -45,21 +51,26 @@ def read_event_and_update_measures(i, measures):
         measures[measure_id]["type_of_asset"].add(normalize_text(evt_primary_asset))
         measures[measure_id]["consequence"].add(normalize_text(evt_consequence))
 
+    return True
+
 
 def update_rrmd(measures):
     s_c = 0
     u_c = 0
 
     for m_id, values in measures.items():
-        if values["type_of_source"] == set():
-            print("[-] Skipping measure %s" % m_id)
-            s_c += 1
-            continue
-        
         start_row = 2 + RRMD_SPAN * (int(m_id) - 1)
         cell = "B{}".format(start_row)
 
         m_name = ws2[cell].value
+        if m_name == "" or m_name == None:
+            # we reached the end of the defined measures
+            break
+
+        if values["type_of_source"] == set():
+           print("[-] Skipping measure %s" % m_id)
+           s_c += 1
+           continue
         print("[+] Updating %s" % m_name)
        
         # Cleaning first
@@ -94,14 +105,19 @@ def add_list_cell(column, start_row, l):
         ws2["{}{}".format(column, start_row + idx)] = elt
 
 def normalize_text(t):
+    if t is None:
+        return ""
     return t.lower().capitalize()
 
 measures = {}
+init_measures(measures)
 
-init_measures(measures, 75)
+keep_reading = True
+k = 0
 
-for k in range(73):
-    read_event_and_update_measures(k, measures)
+while keep_reading:
+    keep_reading = read_event_and_update_measures(k, measures)
+    k += 1
 
 
 c = 0
@@ -117,9 +133,3 @@ print("%d measures not used, %d used" % (c, d))
 update_rrmd(measures)
 
 wb2.save(filename='data/rrmd.xlsx')
-
-
-# rrm = [getMeasure(k) for k in range(65)]
-
-# with open('rrmdb.json', 'w') as outfile:
-#     json.dump(rrm, outfile)

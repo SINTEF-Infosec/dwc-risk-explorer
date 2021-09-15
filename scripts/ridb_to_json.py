@@ -2,7 +2,6 @@ from openpyxl import load_workbook
 import json
 
 RIDB_FILE = 'data/ridb.xlsx'
-NB_EVENTS = 74
 OUTPUT_FILE = "public/resources/events.json"
 
 print("[+] Loading RIDB from %s" % RIDB_FILE)
@@ -40,11 +39,15 @@ def read_event(i):
 
     return event
 
-
 events = []
-
-for k in range(NB_EVENTS):
-    events.append(read_event(k))
+keep_reading = True
+k = 0
+while keep_reading:
+    m = read_event(k)
+    if m["type_of_source"] == "" or m["type_of_source"] == None:
+        break
+    events.append(m)
+    k += 1
 
 with open(OUTPUT_FILE, "w") as of:
     json.dump(events, of)
