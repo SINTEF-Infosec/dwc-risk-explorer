@@ -53,7 +53,7 @@ function HomePage() {
                             </Box>
                         </Paper>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={6}>
                         <Paper className={classes.paper}>
                             <Box m={1} p={4} className={classes.title}>
                                 <Typography id={"events-counts"} variant="h4">
@@ -62,7 +62,7 @@ function HomePage() {
                             </Box>
                         </Paper>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={6}>
                         <Paper className={classes.paper}>
                             <Box m={1} p={4} className={classes.title}>
                                 <Typography id={"measures-counts"} variant="h4">

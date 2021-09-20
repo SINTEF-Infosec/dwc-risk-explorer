@@ -66,17 +66,23 @@ export default function MainAppBar() {
             onClose={handleMobileMenuClose}
         >
             <MenuItem>
-                <Button aria-label="events" color="inherit">
+                <Button aria-label="events" color="inherit" onClick={() => {
+                    history.push('/events')
+                }}>
                     Events
                 </Button>
             </MenuItem>
             <MenuItem>
-                <Button aria-label="events" color="inherit">
+                <Button aria-label="events" color="inherit" onClick={() => {
+                    history.push('/measures')
+                }}>
                     Measures
                 </Button>
             </MenuItem>
             <MenuItem>
-                <Button aria-label="events" color="inherit">
+                <Button aria-label="events" color="inherit" onClick={() => {
+                    history.push('/about')
+                }}>
                     About
                 </Button>
             </MenuItem>

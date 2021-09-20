@@ -53,7 +53,7 @@ function MeasureDetailPage() {
                             </Paper>
                         </Box>
                         <Grid container spacing={3}>
-                            <Grid item xs={7}>
+                            <Grid item xs={12} md={7}>
                                 <Paper className={classes.paper}>
                                     <Box m={2}>
                                         <Typography id={"description-title"} variant="h6">
@@ -73,7 +73,7 @@ function MeasureDetailPage() {
                                     </Box>
                                 </Paper>
                             </Grid>
-                            <Grid item xs={5}>
+                            <Grid item xs={12} md={5}>
                                 <Paper className={classes.paper}>
                                     <Box m={2}>
                                         <Typography id={"measure-id-title"} variant="h6">
