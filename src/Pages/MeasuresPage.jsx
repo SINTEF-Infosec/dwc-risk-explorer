@@ -175,7 +175,7 @@ function MeasuresPage() {
                         {
                             filters.length > 0 ? filters.map((filter, idx) => {
                                 return (
-                                    <Box display={"flex"} flexDirection={"row"} m={1}>
+                                    <Box display={"flex"} flexDirection={"row"} m={1} key={idx}>
                                         <FormControl className={classes.formControl}>
                                             <InputLabel id="Field">Field</InputLabel>
                                             <Select
@@ -185,8 +185,8 @@ function MeasuresPage() {
                                                 onChange={handleChange(idx)}
                                             >
                                                 {
-                                                    availableFilters.map((avFilter) => <MenuItem
-                                                        value={avFilter}>{avFilter}</MenuItem>)
+                                                    availableFilters.map((avFilter, miIdx) => <MenuItem
+                                                        key={"menu-item-" + miIdx}  value={avFilter}>{avFilter}</MenuItem>)
                                                 }
                                             </Select>
                                         </FormControl>

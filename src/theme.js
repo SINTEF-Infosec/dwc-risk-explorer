@@ -1,6 +1,9 @@
 import { createTheme } from '@material-ui/core/styles';
 
 export const themeDWC = createTheme({
+    typography: {
+      fontFamily: 'Montserrat'
+    },
     palette: {
         primary: {
             main: "rgba(31,39,71, 1)",

@@ -15,6 +15,7 @@ import {ThemeProvider} from '@material-ui/core/styles';
 import {themeDWC} from "./theme";
 import Footer from "./Components/Footer";
 import Box from "@material-ui/core/Box";
+import './App.css';
 
 function App() {
     return (
