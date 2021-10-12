@@ -2,7 +2,6 @@ from openpyxl import load_workbook
 import json
 
 RRMD_SPAN = 24
-MAX_MEASURES = 200
 
 wb = load_workbook(filename = 'data/ridb.xlsx')
 wb.active = 3 # Selection of the database sheet
@@ -12,20 +11,7 @@ wb2 = load_workbook(filename = 'data/rrmd.xlsx')
 wb2.active = 3 
 ws2 = wb2.active
 
-def init_measures(measures):
-    for k in range(MAX_MEASURES):
-          measures["{}".format(k+1)] = {
-                "type_of_source": set(),
-                "type_of_threat": set(),
-                "type_of_event": set(),
-                "specific_asset": set(),
-                "type_of_asset": set(),
-                "consequence": set(),
-            }
 def read_event_and_update_measures(i, measures):
-
-    if i > 90:
-        return False
 
     print("[+] Handling event %d" % i)
     evt_id = str(ws["A{}".format(2 + i)].value)
@@ -43,6 +29,17 @@ def read_event_and_update_measures(i, measures):
         return False
 
     for measure_id in evt_measures:
+
+        if measure_id not in measures.keys():
+            measures[measure_id] = {
+                "type_of_source": set(),
+                "type_of_threat": set(),
+                "type_of_event": set(),
+                "specific_asset": set(),
+                "type_of_asset": set(),
+                "consequence": set(),
+            }
+
         measures[measure_id]["type_of_source"].add(normalize_text(evt_type_of_source))
         measures[measure_id]["type_of_threat"].add(normalize_text(evt_type_of_threat))
         measures[measure_id]["type_of_event"].add(normalize_text(evt_type_of_event))
@@ -52,7 +49,6 @@ def read_event_and_update_measures(i, measures):
         measures[measure_id]["consequence"].add(normalize_text(evt_consequence))
 
     return True
-
 
 def update_rrmd(measures):
     s_c = 0
@@ -109,27 +105,23 @@ def normalize_text(t):
         return ""
     return t.lower().capitalize()
 
-measures = {}
-init_measures(measures)
 
-keep_reading = True
-k = 0
+if __name__ == "__main__":
+    measures = {}
 
-while keep_reading:
-    keep_reading = read_event_and_update_measures(k, measures)
-    k += 1
+    keep_reading = True
+    k = 0
+
+    while keep_reading:
+        keep_reading = read_event_and_update_measures(k, measures)
+        k += 1
 
 
-c = 0
-d = 0
-for mid, values in measures.items():
-    if len(values["type_of_source"]) == 0:
-        c += 1
-    else:
-        d += 1
+    d = 0
+    for mid, values in measures.items():
+        if len(values["type_of_source"]) != 0:
+            d += 1
 
-print("%d measures not used, %d used" % (c, d))
-
-update_rrmd(measures)
-
-wb2.save(filename='data/rrmd.xlsx')
+    print("%d measures used" % d)
+    update_rrmd(measures)
+    wb2.save(filename='data/rrmd.xlsx')
