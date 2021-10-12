@@ -80,6 +80,20 @@ export default function MainAppBar() {
                 </Button>
             </MenuItem>
             <MenuItem>
+                <Button aria-label="user-guide" color="inherit" onClick={() => {
+                    history.push('/user-guide')
+                }}>
+                    User Guide
+                </Button>
+            </MenuItem>
+            <MenuItem>
+                <Button aria-label="Download" color="inherit" onClick={() => {
+                    history.push('/download')
+                }}>
+                    Download
+                </Button>
+            </MenuItem>
+            <MenuItem>
                 <Button aria-label="events" color="inherit" onClick={() => {
                     history.push('/about')
                 }}>
@@ -117,7 +131,19 @@ export default function MainAppBar() {
                                 }}>
                             Measures
                         </Button>
-                        <Button className={classes.menuButton} aria-label="measures" color="inherit"
+                        <Button className={classes.menuButton} aria-label="user-guide" color="inherit"
+                                onClick={() => {
+                                    history.push('/user-guide')
+                                }}>
+                            User guide
+                        </Button>
+                        <Button className={classes.menuButton} aria-label="download" color="inherit"
+                                onClick={() => {
+                                    history.push('/download')
+                                }}>
+                            Download
+                        </Button>
+                        <Button className={classes.menuButton} aria-label="about" color="inherit"
                                 onClick={() => {
                                     history.push('/about')
                                 }}>

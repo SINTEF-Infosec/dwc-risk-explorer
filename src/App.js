@@ -16,6 +16,8 @@ import {themeDWC} from "./theme";
 import Footer from "./Components/Footer";
 import Box from "@material-ui/core/Box";
 import './App.css';
+import UserGuidePage from "./Pages/UserGuidePage";
+import DownloadPage from "./Pages/DownloadPage";
 
 function App() {
     return (
@@ -38,6 +40,12 @@ function App() {
                             </Route>
                             <Route path="/measures">
                                 <MeasuresPage/>
+                            </Route>
+                            <Route path="/user-guide">
+                                <UserGuidePage/>
+                            </Route>
+                            <Route path="/download">
+                                <DownloadPage/>
                             </Route>
                             <Route path="/about">
                                 <AboutPage/>
