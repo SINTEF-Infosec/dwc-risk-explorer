@@ -21,8 +21,8 @@ def read_event(i):
     evt_primary_asset = ws["G{}".format(2 + i)].value
     evt_consequence = ws["H{}".format(2 + i)].value
     evt_description = ws["I{}".format(2 + i)].value
-    evt_example = ws["L{}".format(2 + i)].value
-    evt_measures = [m.strip() for m in str(ws["M{}".format(2 + i)].value).split(",")]
+    evt_example = ws["J{}".format(2 + i)].value
+    evt_measures = [m.strip() for m in str(ws["K{}".format(2 + i)].value).split(",")]
 
     event = {}
     event["id"] = evt_id

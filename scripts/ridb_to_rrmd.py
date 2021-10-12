@@ -23,7 +23,7 @@ def read_event_and_update_measures(i, measures):
     evt_primary_asset = ws["G{}".format(2 + i)].value
     evt_consequence = ws["H{}".format(2 + i)].value
     evt_description = ws["I{}".format(2 + i)].value
-    evt_measures = [m.strip() for m in str(ws["M{}".format(2 + i)].value).split(",")]
+    evt_measures = [m.strip() for m in str(ws["K{}".format(2 + i)].value).split(",")]
 
     if evt_type_of_source == "" or evt_type_of_source == None:
         return False
