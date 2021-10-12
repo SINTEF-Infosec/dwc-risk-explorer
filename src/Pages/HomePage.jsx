@@ -44,12 +44,23 @@ function HomePage() {
                                 <Typography id={"about-title"} variant="h6" gutterBottom>
                                     About the explorer
                                 </Typography>
-                                <Typography id={"about"} variant="body1" gutterBottom>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <Typography id={"about-1"} variant="body2" gutterBottom>
+                                    This application is part of Deliverable D4.2 of the <a href={"https://www.digital-water.city/"}>Digital Water City project</a>.
+                                    Deliverable 4.2 (D4.2) combines the results of two sub-tasks of WP4 "Interoperable and secure flow of information", 4.2.1 and 4.2.2 aiming at developing a risk identification database (RIDB) and a risk reduction measure database (RRMD) respectively.
                                 </Typography>
-                                <Typography id={"about"} variant="body1">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br/>
+                                <Typography id={"about-2"} variant="body2">
+                                    The databases have been first implemented in MS Excel to facilitate the process of co-creation and interaction with the DWC Cities and then converted into this Explorer, which allows for an easy visualisation of the two databases, and it is complemented by exploring features that facilitate navigating through risk events and risk treatment measures.
                                 </Typography>
+                                <br/>
+                                <Typography id={"about-3"} variant={"body2"}>
+                                    The RIDB is a catalogue of risk events, related to physical and cyber threats, which could happen in the case of a cyber and/or physical attack affecting the solutions adopted in DWC. The RIDB identifies the type of threats, the sources of risk, the description of the events and the type of consequences produced. The purpose of the RIDB is not to substitute the comprehensive identification of risk events for each application. Instead, the examples given in the RIDB allow the users to commence the process and draw its attention to some possibilities that should be investigated, when local conditions evolve, indicating that an event might occur.
+                                </Typography>
+                                <br/>
+                                <Typography id={"about-4"} variant={"body2"}>
+                                    The RRMD assists risk managers in the process of finding suitable measures for an appropriate risk treatment. The RRMD lists potential measures to reduce risks included in the RIDB. The database shall not replace a fully formulated plan for risk treatment, but rather show to the user options on how risks could be treated by choosing and implementing one or several measures from the database.
+                                </Typography>
+                                <br/>
                             </Box>
                         </Paper>
                     </Grid>
