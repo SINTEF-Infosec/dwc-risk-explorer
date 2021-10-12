@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+
+"""
+    File name: ridb_to_json.py
+    Version: 1.0
+    Author: Guillaume Bour (guillaume.bour@sintef.no)
+    Last modified: 2021/10/12
+    License: MIT License
+    Description: A script to export the RIDB to JSON.
+"""
+
 from openpyxl import load_workbook
 import json
 
