@@ -1,12 +1,12 @@
 from openpyxl import load_workbook
 import json
 
-RIDB_FILE = 'data/ridb.xlsx'
+RIDB_FILE = "data/ridb.xlsx"
 OUTPUT_FILE = "public/resources/events.json"
 
 print("[+] Loading RIDB from %s" % RIDB_FILE)
-wb = load_workbook(filename = RIDB_FILE)
-wb.active = 3 # Selection of the database sheet
+wb = load_workbook(filename=RIDB_FILE)
+wb.active = 3  # Selection of the database sheet
 ws = wb.active
 
 
@@ -33,21 +33,33 @@ def read_event(i):
     event["composite_asset"] = evt_composite_asset
     event["primary_asset"] = evt_primary_asset
     event["consequence"] = evt_consequence
-    event["description"] = "%s generates a %s threat causing a %s of the %s of the %s which affects %s and might lead to a %s issue" % (evt_type_of_source, evt_type_of_threat, evt_type_of_event, evt_supporting_asset, evt_composite_asset, evt_primary_asset, evt_consequence)
+    event[
+        "description"
+    ] = "%s generates a %s threat causing a %s of the %s of the %s which affects %s and might lead to a %s issue" % (
+        evt_type_of_source,
+        evt_type_of_threat,
+        evt_type_of_event,
+        evt_supporting_asset,
+        evt_composite_asset,
+        evt_primary_asset,
+        evt_consequence,
+    )
     event["example"] = evt_example
     event["measures"] = evt_measures
 
     return event
 
-events = []
-keep_reading = True
-k = 0
-while keep_reading:
-    m = read_event(k)
-    if m["type_of_source"] == "" or m["type_of_source"] == None:
-        break
-    events.append(m)
-    k += 1
 
-with open(OUTPUT_FILE, "w") as of:
-    json.dump(events, of)
+if __name__ == "__main__":
+    events = []
+    keep_reading = True
+    k = 0
+    while keep_reading:
+        m = read_event(k)
+        if m["type_of_source"] == "" or m["type_of_source"] == None:
+            break
+        events.append(m)
+        k += 1
+
+    with open(OUTPUT_FILE, "w") as of:
+        json.dump(events, of)

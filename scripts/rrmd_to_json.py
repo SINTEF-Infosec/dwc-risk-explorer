@@ -1,13 +1,14 @@
 from openpyxl import load_workbook
 import json
 
-RRMD_FILE = 'data/rrmd.xlsx'
+RRMD_FILE = "data/rrmd.xlsx"
 OUTPUT_FILE = "public/resources/measures.json"
 RRMD_SPAN = 24
 
-wb2 = load_workbook(filename = 'data/rrmd.xlsx')
-wb2.active = 3 
+wb2 = load_workbook(filename="data/rrmd.xlsx")
+wb2.active = 3
 ws2 = wb2.active
+
 
 def read_list(column, start_row, span):
     elts = []
@@ -16,6 +17,7 @@ def read_list(column, start_row, span):
         if elt is not None:
             elts.append(elt)
     return elts
+
 
 def read_measure(i):
     print("[+] Handling measure %d" % i)
@@ -30,38 +32,39 @@ def read_measure(i):
     measure_specific_asset = read_list("H", m_row, RRMD_SPAN)
     measure_type_of_asset = read_list("I", m_row, RRMD_SPAN)
     measure_consequence = read_list("J", m_row, RRMD_SPAN)
-    measure_risk_reduction_mechanism =ws2["K{}".format(m_row)].value
-    measure_characteristic_of_action =ws2["L{}".format(m_row)].value
-    measure_comments =ws2["M{}".format(m_row)].value
-    measure_details =ws2["O{}".format(m_row)].value
+    measure_risk_reduction_mechanism = ws2["K{}".format(m_row)].value
+    measure_characteristic_of_action = ws2["L{}".format(m_row)].value
+    measure_comments = ws2["M{}".format(m_row)].value
+    measure_details = ws2["O{}".format(m_row)].value
 
     return {
-       "id": measure_id,
-       "short_name": measure_name,
-       "description": measure_description,
-       "type_of_measure": measure_type,
-       "type_of_source": measure_type_of_source,
-       "type_of_threat": measure_type_of_threat,
-       "type_of_event": measure_type_of_event,
-       "specific_asset": measure_specific_asset,
-       "type_of_asset": measure_type_of_asset,
-       "consequence": measure_consequence,
-       "risk_reduction_mechanism": measure_risk_reduction_mechanism,
-       "characteristics_of_action": measure_characteristic_of_action,
-       "comments": measure_comments,
-       "details": measure_details
-   }
-
-rrm = []
-keep_reading = True
-k = 0
-while keep_reading:
-    m = read_measure(k)
-    if m["short_name"] == None or m["short_name"] == "":
-        break
-    rrm.append(m)
-    k += 1
+        "id": measure_id,
+        "short_name": measure_name,
+        "description": measure_description,
+        "type_of_measure": measure_type,
+        "type_of_source": measure_type_of_source,
+        "type_of_threat": measure_type_of_threat,
+        "type_of_event": measure_type_of_event,
+        "specific_asset": measure_specific_asset,
+        "type_of_asset": measure_type_of_asset,
+        "consequence": measure_consequence,
+        "risk_reduction_mechanism": measure_risk_reduction_mechanism,
+        "characteristics_of_action": measure_characteristic_of_action,
+        "comments": measure_comments,
+        "details": measure_details,
+    }
 
 
-with open(OUTPUT_FILE, 'w') as outfile:
-     json.dump(rrm, outfile)
+if __name__ == "__main__":
+    rrm = []
+    keep_reading = True
+    k = 0
+    while keep_reading:
+        m = read_measure(k)
+        if m["short_name"] == None or m["short_name"] == "":
+            break
+        rrm.append(m)
+        k += 1
+
+    with open(OUTPUT_FILE, "w") as outfile:
+        json.dump(rrm, outfile)

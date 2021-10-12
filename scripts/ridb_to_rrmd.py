@@ -3,13 +3,14 @@ import json
 
 RRMD_SPAN = 24
 
-wb = load_workbook(filename = 'data/ridb.xlsx')
-wb.active = 3 # Selection of the database sheet
+wb = load_workbook(filename="data/ridb.xlsx")
+wb.active = 3  # Selection of the database sheet
 ws = wb.active
 
-wb2 = load_workbook(filename = 'data/rrmd.xlsx')
-wb2.active = 3 
+wb2 = load_workbook(filename="data/rrmd.xlsx")
+wb2.active = 3
 ws2 = wb2.active
+
 
 def read_event_and_update_measures(i, measures):
 
@@ -50,6 +51,7 @@ def read_event_and_update_measures(i, measures):
 
     return True
 
+
 def update_rrmd(measures):
     s_c = 0
     u_c = 0
@@ -64,11 +66,11 @@ def update_rrmd(measures):
             break
 
         if values["type_of_source"] == set():
-           print("[-] Skipping measure %s" % m_id)
-           s_c += 1
-           continue
+            print("[-] Skipping measure %s" % m_id)
+            s_c += 1
+            continue
         print("[+] Updating %s" % m_name)
-       
+
         # Cleaning first
         clean_cell("E", start_row)
         clean_cell("F", start_row)
@@ -88,10 +90,12 @@ def update_rrmd(measures):
 
     print("Done with the update: %s updated, %s skipped" % (u_c, s_c))
 
+
 def clean_cell(column, start_row):
     for k in range(RRMD_SPAN):
         c = "{}{}".format(column, start_row + k)
         ws2[c] = ""
+
 
 def add_list_cell(column, start_row, l):
     for idx, elt in enumerate(l):
@@ -99,6 +103,7 @@ def add_list_cell(column, start_row, l):
             print("********** TOO MANY ITEMS IN THE LIST, SKIPPING **********")
             break
         ws2["{}{}".format(column, start_row + idx)] = elt
+
 
 def normalize_text(t):
     if t is None:
@@ -116,7 +121,6 @@ if __name__ == "__main__":
         keep_reading = read_event_and_update_measures(k, measures)
         k += 1
 
-
     d = 0
     for mid, values in measures.items():
         if len(values["type_of_source"]) != 0:
@@ -124,4 +128,4 @@ if __name__ == "__main__":
 
     print("%d measures used" % d)
     update_rrmd(measures)
-    wb2.save(filename='data/rrmd.xlsx')
+    wb2.save(filename="data/rrmd.xlsx")
