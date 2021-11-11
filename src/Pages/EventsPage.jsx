@@ -134,7 +134,7 @@ function EventsPage() {
         <div className={classes.pageContainer}>
             <Box display="flex" flexDirection={"row"} style={{marginBottom: "2em"}}>
                 <Typography id={"title"} variant="h4" gutterBottom>
-                    Events ({events.length} loaded)
+                    Risk Identification - Events ({events.length} loaded)
                 </Typography>
                 <Box flexGrow={1} p={1} m={1}/>
                 <Button variant="contained" startIcon={<SettingsIcon/>} onClick={() => setShowFilters(!showFilters)} >

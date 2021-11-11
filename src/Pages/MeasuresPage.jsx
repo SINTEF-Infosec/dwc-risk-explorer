@@ -159,7 +159,7 @@ function MeasuresPage() {
         <div className={classes.pageContainer}>
             <Box display="flex" flexDirection={"row"} style={{marginBottom: "2em"}}>
                 <Typography id={"title"} variant="h4" gutterBottom>
-                    Measures ({measures.length} loaded)
+                    Risk Reduction Measures ({measures.length} loaded)
                 </Typography>
                 <Box flexGrow={1} p={1} m={1}/>
                 <Button variant="contained" startIcon={<SettingsIcon/>} onClick={() => setShowFilters(!showFilters)} >
