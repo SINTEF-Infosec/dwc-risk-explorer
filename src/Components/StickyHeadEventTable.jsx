@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
     },
-    container: {
-        maxHeight: 1000,
-    },
     pageContainer: {
         margin: theme.spacing(4)
     },
