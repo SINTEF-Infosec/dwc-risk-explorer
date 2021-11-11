@@ -48,4 +48,4 @@ The script updates the RRMD based on the RIDB, then dumps both databases as JSON
 
 ### Open an issue
 
-[Open an issue](https://github.com/SINTEF-Infosec/dwc-risk-explorer/issues/new) with the exact changes/addition to be made. Please mention "DB UPDATE" in the title for easier labelling.
+[Open an issue](https://github.com/SINTEF-Infosec/dwc-risk-explorer/issues/new/choose) with the exact changes/additions to be made. Please use the pre-made template "Adding risks and/or risk reduction measures".
