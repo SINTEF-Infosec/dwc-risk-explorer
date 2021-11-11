@@ -65,7 +65,12 @@ function HomePage() {
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paper} elevation={3}>
+                            <Box m={1} p={4} className={classes.title}>
+                                <Typography id={"events"} variant="h4">
+                                    Risk Identification
+                                </Typography>
+                            </Box>
                             <Box m={1} p={4} className={classes.title}>
                                 <Typography id={"events-counts"} variant="h4">
                                     <Link href={""} onClick={() => history.push("/events/")}>{events.length} Events</Link>
@@ -74,7 +79,12 @@ function HomePage() {
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paper} elevation={3}>
+                            <Box m={1} p={4} className={classes.title}>
+                                <Typography id={"measures"} variant="h4">
+                                    Risk Reduction Measures
+                                </Typography>
+                            </Box>
                             <Box m={1} p={4} className={classes.title}>
                                 <Typography id={"measures-counts"} variant="h4">
                                     <Link href={""} onClick={() => history.push("/measures/")}>{measures.length} Measures</Link>
