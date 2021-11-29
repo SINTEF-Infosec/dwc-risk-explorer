@@ -1,5 +1,7 @@
 # DWC Risk Explorer
 
+[![DOI](https://zenodo.org/badge/426639272.svg)](https://zenodo.org/badge/latestdoi/426639272)
+
 This application is part of Deliverable D4.2 of the [Digital Water City project](https://www.digital-water.city/). Deliverable 4.2 (D4.2) combines the results of two sub-tasks of WP4 "Interoperable and secure flow of information", 4.2.1 and 4.2.2 aiming at developing a risk identification database (RIDB) and a risk reduction measure database (RRMD) respectively.
 
 <img src="https://github.com/SINTEF-Infosec/dwc-risk-explorer/blob/master/screenshots/events.png" width="50%">
