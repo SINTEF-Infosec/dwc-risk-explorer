@@ -147,7 +147,7 @@ function EventDetailPage() {
                                             {
                                                 eventMeasures.map((measure, idx) =>
                                                     <li key={idx} style={{marginBottom: "1em"}}>
-                                                        <Link href="" onClick={() => history.push('/measures/' + measure["id"])}>{measure["id"] + " - " + splitWords(measure["short_name"])}</Link>
+                                                        <Link onClick={() => history.push('/measures/' + measure["id"])}>{measure["id"] + " - " + splitWords(measure["short_name"])}</Link>
                                                     </li>)
                                             }
                                         </ul> : <Typography id={"measures-title"} variant="body1">
