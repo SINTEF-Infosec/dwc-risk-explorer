@@ -12,7 +12,7 @@ export default function Footer() {
             <Container maxWidth="md">
                 <Toolbar >
                     <Typography variant="body1" color="inherit">
-                        © 2021 <Link color="secondary" href={"https://www.digital-water.city/"}>Digital Water City</Link> - Version {version}
+                        © {new Date().getFullYear()} <Link color="secondary" href={"https://www.digital-water.city/"}>Digital Water City</Link> - Version {version}
                     </Typography>
                 </Toolbar>
             </Container>
