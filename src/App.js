@@ -1,8 +1,7 @@
 import React from "react";
 import {
-    BrowserRouter as Router,
     Switch,
-    Route,
+    Route, HashRouter,
 } from "react-router-dom";
 import EventsPage from "./Pages/EventsPage";
 import MeasuresPage from "./Pages/MeasuresPage";
@@ -21,7 +20,7 @@ import DownloadPage from "./Pages/DownloadPage";
 
 function App() {
     return (
-        <Router>
+        <HashRouter>
             <ThemeProvider theme={themeDWC}>
                 <Box display={"flex"} flexDirection={"column"} style={{height: "100vh"}}>
                     <Box>
@@ -60,7 +59,7 @@ function App() {
                     </Box>
                 </Box>
             </ThemeProvider>
-        </Router>
+        </HashRouter>
     );
 }
 

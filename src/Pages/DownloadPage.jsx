@@ -35,7 +35,7 @@ function DownloadPage() {
                         <Paper className={classes.paper} elevation={3}>
                             <Box m={1} p={4} className={classes.title}>
                                 <Button variant="outlined" startIcon={<GetAppIcon/>}
-                                        onClick={() => window.location.href = "/resources/ridb.xlsx"}>
+                                        onClick={() => window.location.href = "/dwc-risk-explorer/resources/ridb.xlsx"}>
                                     RIDB
                                 </Button> (ridb.xlsx)
                             </Box>
@@ -47,7 +47,7 @@ function DownloadPage() {
                         <Paper className={classes.paper} elevation={3}>
                             <Box m={1} p={4} className={classes.title}>
                                 <Button variant="outlined" startIcon={<GetAppIcon/>}
-                                        onClick={() => window.location.href = "/resources/rrmd.xlsx"}>
+                                        onClick={() => window.location.href = "/dwc-risk-explorer/resources/rrmd.xlsx"}>
                                     RRMD
                                 </Button> (rrmd.xlsx)
                             </Box>

@@ -2,7 +2,7 @@ const EVENTS_FILE = "events.json"
 const MEASURES_FILE = "measures.json"
 
 export async function getJSON(fileName) {
-    return fetch('/resources/' + fileName,
+    return fetch('/dwc-risk-explorer/resources/' + fileName,
         {
             headers: {
                 'Content-Type': 'application/json',
