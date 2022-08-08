@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/dwc-risk-explorer/static/css/main.07bc1898.chunk.css",
+    "main.js": "/dwc-risk-explorer/static/js/main.d66f6497.chunk.js",
+    "main.js.map": "/dwc-risk-explorer/static/js/main.d66f6497.chunk.js.map",
+    "runtime-main.js": "/dwc-risk-explorer/static/js/runtime-main.82d2098a.js",
+    "runtime-main.js.map": "/dwc-risk-explorer/static/js/runtime-main.82d2098a.js.map",
+    "static/js/2.34daab30.chunk.js": "/dwc-risk-explorer/static/js/2.34daab30.chunk.js",
+    "static/js/2.34daab30.chunk.js.map": "/dwc-risk-explorer/static/js/2.34daab30.chunk.js.map",
+    "static/js/3.b06be896.chunk.js": "/dwc-risk-explorer/static/js/3.b06be896.chunk.js",
+    "static/js/3.b06be896.chunk.js.map": "/dwc-risk-explorer/static/js/3.b06be896.chunk.js.map",
+    "index.html": "/dwc-risk-explorer/index.html",
+    "static/css/main.07bc1898.chunk.css.map": "/dwc-risk-explorer/static/css/main.07bc1898.chunk.css.map",
+    "static/js/2.34daab30.chunk.js.LICENSE.txt": "/dwc-risk-explorer/static/js/2.34daab30.chunk.js.LICENSE.txt",
+    "static/media/logo.4b1531ae.svg": "/dwc-risk-explorer/static/media/logo.4b1531ae.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.82d2098a.js",
+    "static/js/2.34daab30.chunk.js",
+    "static/css/main.07bc1898.chunk.css",
+    "static/js/main.d66f6497.chunk.js"
+  ]
+}
