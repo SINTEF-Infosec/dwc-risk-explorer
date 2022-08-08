@@ -73,7 +73,7 @@ function HomePage() {
                             </Box>
                             <Box m={1} p={4} className={classes.title}>
                                 <Typography id={"events-counts"} variant="h4">
-                                    <Link href={""} onClick={() => history.push("/events/")}>{events.length} Events</Link>
+                                    <Link onClick={() => history.push("/events")}>{events.length} Events</Link>
                                 </Typography>
                             </Box>
                         </Paper>
@@ -87,7 +87,7 @@ function HomePage() {
                             </Box>
                             <Box m={1} p={4} className={classes.title}>
                                 <Typography id={"measures-counts"} variant="h4">
-                                    <Link href={""} onClick={() => history.push("/measures/")}>{measures.length} Measures</Link>
+                                    <Link onClick={() => history.push("/measures")}>{measures.length} Measures</Link>
                                 </Typography>
                             </Box>
                         </Paper>
